@@ -7,6 +7,12 @@ Códigos da disciplina de Sistemas de Banco de Dados, do 4° Período.
 --git push origin main
 
 ## Banco de dados local
-sqlite --version 
-sqlite [nome].db
-CREAT TABLE []
+sqlite3 --version         | se esta funcioando
+sqlite3 [nome].db         | cria banco
+PRAGMA foreing_keys = ON; | abilita as chaves da tabela
+CREATE TABLE nome         | cria tabela  ctrl enter
+.table                    | para var tabela
+TRUNCATE TABLE nome_da_tabela; | deletar tabela 
+
+id PRIMARY KEY              | CHAVE PRIMARIA, ablitar chave estrangeira
+AUTOINCREMENT,
