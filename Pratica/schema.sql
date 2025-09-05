@@ -40,55 +40,23 @@ CREATE TABLE inscricao(
 
 
 -- Inserir participante
-INSERT INTO participante (nome, email, telefone) VALUES ('Rafael','rafael@unipam','leafar');
-INSERT INTO participante (nome, email, telefone) VALUES ('Gabriel','gabriel@uftm','leirbag');
-INSERT INTO participante (nome, email, telefone) VALUES ('Cecilia','cecilia@filho','cecilia');
+INSERT INTO participante (nome, email, telefone) VALUES ('Ketley','rafael@unipam','555555555');
+INSERT INTO participante (nome, email, telefone) VALUES ('Gabriel','gabriel@ufm','666666666');
+INSERT INTO participante (nome, email, telefone) VALUES ('Joao','joao@uff','777777777');
 
 -- Inserir evento
-INSERT INTO evento (nome, descricao, local, data) VALUES ('Rafael','rafael@unipam','leafar');
-INSERT INTO evento (nome, descricao, local, data) VALUES ('Gabriel','gabriel@uftm','leirbag');
-INSERT INTO evento (nome, descricao, local, data) VALUES ('Cecilia','cecilia@filho','cecilia');
+INSERT INTO evento (nome, descricao, local, data) VALUES ('Fenamilho','milho','Patos', '21/02/2025');
+INSERT INTO evento (nome, descricao, local, data) VALUES ('Fena','grao','Uberlandia','10/09/2023');
+INSERT INTO evento (nome, descricao, local, data) VALUES ('Fafa','farofa','feira', '07/12/2025');
+
 
 -- Inserir inscricao
-INSERT INTO inscricao (data, status, evento_id, participante_id) VALUES ('Gabriel Marinho', '999999999', 3);
-INSERT INTO inscricao (data, status, evento_id, participante_id) VALUES ('Cecilia Marinho', '999999999', 4);
-INSERT INTO inscricao (data, status, evento_id, participante_id) VALUES ('Joaquim Marinho', '999999999', 5);
+INSERT INTO inscricao (data_inscricao, status, evento_id, participante_id) VALUES ('20/02/2025', 'confirmada', 1, 1);
+INSERT INTO inscricao (data_inscricao, status, evento_id, participante_id) VALUES ('09/09/2023', 'confirmada', 2, 2);
+INSERT INTO inscricao (data_inscricao, status, evento_id, participante_id) VALUES ('06/12/2025', 'confirmada', 3, 3);
+
 
 -- Inserir pagamento
-INSERT INTO inscricao (valor, data_pagamento, status, inscricao_id) VALUES ('Gabriel Marinho', '999999999', 3);
-INSERT INTO inscricao (valor, data_pagamento, status, inscricao_id) VALUES ('Cecilia Marinho', '999999999', 4);
-INSERT INTO inscricao (valor, data_pagamento, status, inscricao_id) VALUES ('Joaquim Marinho', '999999999', 5);
-
-
-
-/* 
-
-● Participante
-○ id (PK, inteiro autoincrement) *
-○ nome (texto, NOT NULL)         *
-○ email (texto, NOT NULL, UNIQUE) *
-○ telefone (texto)  *
-
-● Evento
-○ id (PK, inteiro autoincrement)
-○ nome (texto, NOT NULL)
-○ descricao (texto)
-○ local (texto, NOT NULL)
-○ data (texto, NOT NULL)
-
-● Pagamento
-○ id (PK, inteiro autoincrement)
-○ id_inscricao (FK -> Inscricao.id, UNIQUE para garantir 1:1)
-○ valor (real)
-○ data_pagamento (texto)
-○ status (texto — ex.: "pago", "pendente")
-Obs: Regra 1:1 usada aqui: cada Inscricao tem no máximo um Pagamento.
-
-● Inscricao (tabela associativa — resolve N:M Evento↔Participante):
-○ id (PK, inteiro autoincrement)
-○ id_evento (FK -> Evento.id, NOT NULL)
-○ id_participante (FK -> Participante.id, NOT NULL)
-○ data_inscricao (texto)
-○ status (texto — ex.: "confirmada", "cancelada")
-
-*/
+INSERT INTO pagamento (valor, data_pagamento, status, inscricao_id) VALUES ('250', '20/02/2025', 'pago', 1);
+INSERT INTO pagamento (valor, data_pagamento, status, inscricao_id) VALUES ('250', '09/09/2023', 'pago', 2);
+INSERT INTO pagamento (valor, data_pagamento, status, inscricao_id) VALUES ('250', '06/12/2025', 'pago', 3);
