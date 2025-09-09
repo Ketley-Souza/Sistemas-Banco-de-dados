@@ -16,3 +16,13 @@ TRUNCATE TABLE nome_da_tabela; | deletar tabela
 
 id PRIMARY KEY              | CHAVE PRIMARIA, ablitar chave estrangeira
 AUTOINCREMENT,
+
+
+
+docker-compose up -d       | Rodar o docker
+
+
+docker exec -it postgres_container psql -U root -d bd_aula01  |Rodar Banco de dados
+
+\dt visualiza tabela
+\d visualiza tabela expecifica 
