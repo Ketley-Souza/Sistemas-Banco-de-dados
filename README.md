@@ -26,3 +26,8 @@ docker exec -it postgres_container psql -U root -d bd_aula01  |Rodar Banco de da
 
 \dt visualiza tabela
 \d visualiza tabela expecifica 
+
+
+##LEMBRAR PARA PROVA OQ SERIA FOREIGN KEY
+
+
