@@ -19,8 +19,10 @@ AUTOINCREMENT,
 
 
 
-docker-compose up -d       | Rodar o docker
+## Virtualização
 
+docker-compose up -d       | Rodar o docker
+docker ps | Para ver qual container esta rodando
 
 docker exec -it postgres_container psql -U root -d bd_aula01  |Rodar Banco de dados
 
@@ -29,5 +31,19 @@ docker exec -it postgres_container psql -U root -d bd_aula01  |Rodar Banco de da
 
 
 ##LEMBRAR PARA PROVA OQ SERIA FOREIGN KEY
+
+docker ps | Para ver qual container esta rodando
+docker ps -a| Para ver todos nesse repositorio
+docker stop {docker codigo} | parar o docker mesmo a porta não estando funcionando 
+
+
+
+AS
+IN
+AND
+OR 
+ASC
+DESC
+
 
 
