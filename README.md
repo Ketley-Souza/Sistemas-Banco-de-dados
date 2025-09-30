@@ -44,6 +44,10 @@ AND
 OR 
 ASC
 DESC
+MIN
+MAX
+ROUND
+AVG
 
 
 
