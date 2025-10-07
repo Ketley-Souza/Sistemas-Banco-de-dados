@@ -46,8 +46,15 @@ ASC
 DESC
 MIN
 MAX
-ROUND
-AVG
+ROUND      -- conversao para duas casas decimais
+AVG        -- A AVG() função retorna o valor médio de uma coluna numérica.
+::numeric  -- Converte um valor ou string para o tipo NUMERIC ::numeric , 2) casas decimais
+
+
+count()
+LIMIT
+LIKE
+
 
 
 

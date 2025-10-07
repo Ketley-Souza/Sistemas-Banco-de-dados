@@ -1,0 +1,102 @@
+------------BUSCA POR TIPO DE UNIDADE-----------------
+SELECT * FROM vendas_itens2  
+WHERE unidade LIKE '%N' 
+ORDER BY valor_unitario ASC
+LIMIT 20;
+--LIMIT, LIKE
+
+
+--------------------------------------------------------
+SELECT * FROM vendas_itens2  
+ORDER BY data_venda ASC
+LIMIT 40 OFFSET 10; --OFFSET PAGINAÇÃO, SEPARA POR PAGINA
+
+--------------------------------------------------------
+
+
+SELECT * FROM vendas_itens2  
+WHERE valor_unitario BETWEEN 10 AND 50
+ORDER BY valor_unitario ASC;ORDER BY valor_unitario ASC;
+
+--------------------------------------------------------
+CREATE TEMP TABLE temp_vendas_itens2 AS
+SELECT * FROM vendas_itens2
+LIMIT 0;
+
+INSERT INTO temp_vendas_itens2
+SELECT * FROM vendas_itens2
+WHERE data_venda >= '2025-09-10';
+
+SELECT count(*) FROM temp_vendas_itens2;
+
+DROP TABLE IF EXISTS temp_vendas_itens2;
+
+--------------------------------------------------------
+SELECT * FROM vendas_itens2;
+
+-- Add the column outside of any query block
+ALTER TABLE vendas_itens2
+ADD COLUMN custo_total numeric(12,2);
+
+UPDATE vendas_itens2
+SET custo_total = ROUND(valor_unitario * quantidade, 2);
+
+--ALTER TABLE vendas_itens2
+--DROP COLUMN custo_total;
+
+SELECT 
+    venda_id,
+    SUM(custo_total) AS soma_custo_total,
+    data_venda
+FROM 
+    vendas_itens2
+GROUP BY
+    venda_id, data_venda
+ORDER BY
+    soma_custo_total DESC;
+
+
+--------------------------------------------------------
+SELECT 
+    count(*) AS total_registros
+FROM
+    vendas_itens2;
+
+
+----------------Quantidade de produtos distintos----------------------------------------
+
+SELECT 
+    count(DISTINCT produto_id) AS qts_produtos
+FROM
+    vendas_itens2;
+
+--------------------------------------------------------
+
+SELECT 
+    venda_id,
+    SUM(custo_total) AS soma_custo_total,
+    data_venda
+FROM 
+    vendas_itens2
+GROUP BY
+    venda_id, data_venda
+HAVING
+    SUM(custo_total) > 500
+ORDER BY
+    soma_custo_total DESC;
+
+--------------------------------------------------------
+
+UPDATE 
+   vendas_itens2
+SET
+   custo_total = custo_total * 1.5;
+
+--------------------------------------------------------
+
+SELECT count(*) AS total_qtd_unidades
+FROM vendas_itens2
+WHERE unidade LIKE '%N' ;
+
+
+
