@@ -147,3 +147,151 @@ INNER JOIN clientes c
 ORDER BY
     p.data_pedido DESC;
 
+
+
+
+
+
+
+---------AULA DIA 16/10/2025--------------------------------------------------------------
+------------------------------------------------------------------------------------------
+
+
+-- Left Join pedidos -> clientes
+SELECT
+    p.id AS pedido_id,
+    p.data_pedido,
+    c.id AS cliente_id,
+    c.nome AS cliente_nome
+FROM
+    pedidos p
+LEFT JOIN clientes c
+    ON p.id_cliente = c.id;
+
+
+-- Left Join clientes -> pedidos
+SELECT
+  c.nome AS cliente_nome,
+  c.id AS cliente_id,
+  p.id AS pedido_id,
+  p.data_pedido
+FROM
+  clientes c
+LEFT JOIN pedidos p
+  ON p.id_cliente = c.id;
+
+-- Right Join pedidos -> clientes
+SELECT
+    c.nome AS cliente_nome,
+    c.id AS cliente_id,
+    p.id AS pedido_id,
+    p.data_pedido
+FROM
+    pedidos p
+RIGHT JOIN clientes c
+    ON p.id_cliente = c.id;
+
+
+-- Rigth Join clientes -> pedidos
+SELECT
+  c.nome AS cliente_nome,
+  c.id AS cliente_id,
+  p.id AS pedido_id,
+  p.data_pedido
+FROM
+  clientes c
+RIGHT JOIN pedidos p
+  ON p.id_cliente = c.id;
+
+-- Listar todos produtos e a quantidade total vendida (manter produtos sem vendas)
+SELECT
+  pr.id,
+  pr.nome,
+  pr.estoque,
+  SUM(it.quantidade) AS total_vendido
+FROM
+  produtos pr
+LEFT JOIN itens_pedido it
+  ON it.id_produto = pr.id
+GROUP BY
+  pr.id,
+  pr.nome
+ORDER BY
+  total_vendido ASC;
+
+INSERT INTO produtos (id, nome, preco, estoque, id_fornecedor) VALUES
+  (11, 'Tablet', 1356.90, 15, 2);
+
+
+-- Itens pedidos com informações de produtos
+SELECT
+  it.id_pedido,
+  it.id_produto,
+  pr.nome AS produto_nome,
+  it.quantidade,
+  it.preco_unitario
+FROM
+  produtos pr
+LEFT JOIN itens_pedido it
+  ON it.id_produto = pr.id
+ORDER BY
+  it.id_pedido ASC;
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------
+
+--listar todos os produtos e a quantidade total vendida 
+SELECT
+  pr.id AS produto_id,   -- tabela da direita
+  pr.nome AS produto_nome,
+  SUM(it.quantidade) AS total_vendido
+FROM
+  produtos pr
+RIGHT JOIN itens_pedido it  --tabela da esquerda, it == chave estrangeira
+  ON it.id_produto = pr.id
+GROUP BY
+  pr.id,
+  pr.nome
+ORDER BY
+  total_vendido DESC;
+
+
+INSERT INTO produtos (id, nome, preco, estoque, id_fornecedor) VALUES
+(11, 'Tablet', 1356.90, 15, 2);
+
+
+-- Itens pedidos com informações de produtos
+SELECT
+  it.id_pedido,
+  pr.id,
+  pr.nome AS nome_produto
+FROM
+  itens_pedido it
+LEFT JOIN produtos pr  --tabela da esquerda, it == chave estrangeira
+  ON it.id_produto = pr.id
+ORDER BY
+  pr.id ASC;
+
+
+-- Estoque atual com total vendido - necessário para a analise do desempenho da empresa
+SELECT
+    pr.id,
+    pr.nome,
+    pr.estoque,
+    SUM(it.quantidade) AS total_vendido --alias temos o sum então precisamos do group by
+FROM
+    produtos pr
+LEFT JOIN itens_pedido it
+    ON  it.id_produto = pr.id
+GROUP BY
+    pr.id,
+    pr.nome,
+    pr.estoque
+ORDER BY
+    total_vendido DESC;
+
